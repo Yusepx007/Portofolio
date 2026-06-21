@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+    # 1. Mencegah Directory Listing (Pencarian folder seperti /img, /css, dll)
+    Options -Indexes
+
+    RewriteEngine On
+
+    # 2. Redirect URL berekstensi .html menjadi tanpa ekstensi (Contoh: /skill.html -> /skill)
+    RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+    RewriteRule ^ /%1 [R=301,L,NE]
+
+    # 3. Membaca URL tanpa ekstensi sebagai file .html secara internal
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
+# 4. Mencegah akses langsung ke file .htaccess ini
+<Files .htaccess>
+    Require all denied
+</Files>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="About De Yusep Purnama Satria — Mahasiswa Informatika, developer, dan community leader.">
+  <title>About | De Yusep Purnama Satria</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .about-page {
+      min-height: calc(100vh - var(--nav-height));
+      padding: 80px 24px;
+    }
+
+    /* ── Hero intro ── */
+    .about-hero {
+      max-width: 1200px;
+      margin: 0 auto 80px;
+      text-align: center;
+    }
+
+    /* ── Grid ── */
+    .about-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* ── Profile card ── */
+    .profile-card {
+      padding: 36px;
+      text-align: center;
+      position: sticky;
+      top: calc(var(--nav-height) + 24px);
+    }
+
+    .profile-img-wrap {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .profile-img-wrap img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--bg-primary);
+    }
+
+    .profile-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .profile-role {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .profile-meta {
+      list-style: none;
+      text-align: left;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .profile-meta li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .profile-meta li i {
+      width: 16px;
+      color: var(--accent);
+    }
+
+    .social-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .social-row a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: color var(--transition), border-color var(--transition), background var(--transition);
+    }
+
+    .social-row a:hover {
+      color: var(--accent);
+      border-color: var(--border-accent);
+      background: rgba(34, 211, 238, 0.08);
+    }
+
+    /* ── Right side content ── */
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .content-block {
+      padding: 32px;
+    }
+
+    .block-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .block-title i {
+      color: var(--accent);
+      font-size: 1rem;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .stat-box {
+      padding: 20px;
+      border-radius: var(--radius-md);
+      background: rgba(34, 211, 238, 0.06);
+      border: 1px solid var(--border-accent);
+      text-align: center;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .stat-box:hover {
+      background: rgba(34, 211, 238, 0.12);
+      transform: translateY(-3px);
+    }
+
+    .stat-box .num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .stat-box .lbl {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Org list */
+    .org-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .org-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .org-item:hover {
+      border-color: var(--border-accent);
+      background: rgba(34, 211, 238, 0.05);
+    }
+
+    .org-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: rgba(34, 211, 238, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .org-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .org-role {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Project cards */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .project-card {
+      padding: 20px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+    }
+
+    .project-card:hover {
+      border-color: var(--border-accent);
+      background: rgba(34, 211, 238, 0.05);
+      transform: translateY(-3px);
+    }
+
+    .project-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .project-card p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: rgba(34, 211, 238, 0.1);
+      border: 1px solid rgba(34, 211, 238, 0.2);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .about-page {
+        padding: 50px 18px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ════ NAVBAR ════ -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="logo"> <span>Purnama Satria</span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="skill.html">Skills</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="skill.html">Skills</a>
+    <a href="experience.html">Experience</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- ════ ABOUT PAGE ════ -->
+  <div class="about-page">
+
+    <!-- Hero intro -->
+    <div class="about-hero reveal">
+      <span class="section-badge"><i class="fas fa-user"></i> Tentang Saya</span>
+      <h1 class="section-title" style="margin-top:12px;">Kenalan Lebih <span>Dekat</span></h1>
+    </div>
+
+    <div class="about-grid">
+
+      <!-- Profile card -->
+      <div class="glass-card profile-card reveal">
+        <div class="profile-img-wrap">
+          <img src="img/profile.jpeg" alt="De Yusep Purnama Satria" loading="eager">
+        </div>
+        <div class="profile-name">De Yusep Purnama Satria</div>
+        <div class="profile-role">Informatika Student &amp; Developer</div>
+
+        <ul class="profile-meta">
+          <li><i class="fas fa-map-marker-alt"></i> Tasikmalaya, Jawa Barat</li>
+          <li><i class="fas fa-university"></i> Universitas Mayasari Bakti</li>
+          <li><i class="fas fa-graduation-cap"></i> Teknik Informatika</li>
+          <li><i class="fas fa-calendar"></i> Mulai Coding: 2022</li>
+          <li><i class="fas fa-envelope"></i> deyusep01@gmail.com</li>
+        </ul>
+
+        <div class="social-row">
+          <a href="https://instagram.com/yusepx007" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://tiktok.com/@thebebigingbing" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="about-content">
+
+        <!-- Bio -->
+        <div class="glass-card content-block reveal">
+          <div class="block-title"><i class="fas fa-terminal"></i> Who Am I?</div>
+          <div class="about-text">
+            <p>
+              Saya adalah <strong>De Yusep Purnama Satria</strong>, mahasiswa Teknik Informatika
+              di Universitas Mayasari Bakti Tasikmalaya yang memiliki semangat tinggi dalam dunia
+              teknologi dan pemberdayaan masyarakat.
+            </p>
+            <p>
+              Bidang yang saya tekuni meliputi <strong>Web Development</strong>, <strong>Internet of Things</strong>,
+              dan <strong>Artificial Intelligence</strong>. Saya berprinsip bahwa teknologi adalah alat
+              untuk menciptakan dampak nyata bagi masyarakat.
+            </p>
+            <p>
+              Selain koding, saya aktif sebagai pemimpin dalam berbagai organisasi nasional dan
+              kegiatan sosial sejak tahun 2022 — mulai dari komunitas pemuda hingga penelitian kampus.
+            </p>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="glass-card content-block reveal">
+          <div class="block-title"><i class="fas fa-chart-bar"></i> Snapshot</div>
+          <div class="stats-grid">
+            <div class="stat-box">
+              <div class="num">10+</div>
+              <div class="lbl">Projects</div>
+            </div>
+            <div class="stat-box">
+              <div class="num">3+</div>
+              <div class="lbl">Years Learning</div>
+            </div>
+            <div class="stat-box">
+              <div class="num">6+</div>
+              <div class="lbl">Organizations</div>
+            </div>
+            <div class="stat-box">
+              <div class="num">2022</div>
+              <div class="lbl">Start Coding</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Organizations -->
+        <div class="glass-card content-block reveal">
+          <div class="block-title"><i class="fas fa-users"></i> Organisasi & Pencapaian</div>
+          <div class="org-list">
+            <div class="org-item">
+              <div class="org-icon" style="background: rgba(255,100,50,0.15); color: #ff6432;">
+                <i class="fas fa-rocket"></i>
+              </div>
+              <div>
+                <div class="org-name">IndonextX — Program Telkomsel</div>
+                <div class="org-role">Peserta Lolos Seleksi Nasional · 2026</div>
+              </div>
+            </div>
+            <div class="org-item">
+              <div class="org-icon"><i class="fas fa-laptop-code"></i></div>
+              <div>
+                <div class="org-name">HMIF Universitas Mayasari Bakti</div>
+                <div class="org-role">Ketua Divisi Pengabdian Masyarakat · 2025 – Sekarang</div>
+              </div>
+            </div>
+            <div class="org-item">
+              <div class="org-icon"><i class="fas fa-globe"></i></div>
+              <div>
+                <div class="org-name">Muda Mendunia Indonesia</div>
+                <div class="org-role">Head of Regional Coordinator Jawa Barat · 2025 – 2026</div>
+              </div>
+            </div>
+            <div class="org-item">
+              <div class="org-icon"><i class="fas fa-star"></i></div>
+              <div>
+                <div class="org-name">Novo Club Batch 3 – Paragon</div>
+                <div class="org-role">Peserta &amp; Welcoming Party Leader</div>
+              </div>
+            </div>
+            <div class="org-item">
+              <div class="org-icon"><i class="fas fa-seedling"></i></div>
+              <div>
+                <div class="org-name">Young Ranger Indonesia</div>
+                <div class="org-role">Anggota Aktif</div>
+              </div>
+            </div>
+            <div class="org-item">
+              <div class="org-icon"><i class="fas fa-lightbulb"></i></div>
+              <div>
+                <div class="org-name">Pemimpin.id</div>
+                <div class="org-role">Program Participant</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="glass-card content-block reveal">
+          <div class="block-title"><i class="fas fa-code-branch"></i> Projects Unggulan</div>
+          <div class="project-grid">
+            <div class="project-card">
+              <h4>GoTasik Tourism App</h4>
+              <p>Website &amp; mobile app promosi wisata Tasikmalaya dengan fitur Virtual Tour.</p>
+              <div class="tag-list">
+                <span class="tag">Flutter</span><span class="tag">PHP</span><span class="tag">MySQL</span>
+              </div>
+            </div>
+            <div class="project-card">
+              <h4>Smart Expert System</h4>
+              <p>Sistem pakar rekomendasi olahraga untuk penderita diabetes berbasis Decision Tree.</p>
+              <div class="tag-list">
+                <span class="tag">JavaScript</span><span class="tag">AI</span>
+              </div>
+            </div>
+            <div class="project-card">
+              <h4>Smart Trash IoT</h4>
+              <p>Sistem pengelolaan sampah digital untuk inovasi lingkungan Kota Tasikmalaya.</p>
+              <div class="tag-list">
+                <span class="tag">IoT</span><span class="tag">Arduino</span>
+              </div>
+            </div>
+            <div class="project-card">
+              <h4>PMB AR &amp; Chatbot</h4>
+              <p>Augmented Reality campus tour &amp; chatbot PMB berbasis NLP.</p>
+              <div class="tag-list">
+                <span class="tag">AR</span><span class="tag">Roblox</span><span class="tag">Chatbot</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+[06-Mar-2026 07:00:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mail() in /home/kotapin2/public_html/personalweb/send_email.php:29
+Stack trace:
+#0 {main}
+  thrown in /home/kotapin2/public_html/personalweb/send_email.php on line 29
+[06-Mar-2026 07:00:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mail() in /home/kotapin2/public_html/personalweb/send_email.php:29
+Stack trace:
+#0 {main}
+  thrown in /home/kotapin2/public_html/personalweb/send_email.php on line 29
+[06-Mar-2026 07:00:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mail() in /home/kotapin2/public_html/personalweb/send_email.php:29
+Stack trace:
+#0 {main}
+  thrown in /home/kotapin2/public_html/personalweb/send_email.php on line 29
+[06-Mar-2026 07:01:03 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mail() in /home/kotapin2/public_html/personalweb/send_email.php:29
+Stack trace:
+#0 {main}
+  thrown in /home/kotapin2/public_html/personalweb/send_email.php on line 29
+[06-Mar-2026 07:02:59 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mail() in /home/kotapin2/public_html/personalweb/send_email.php:36
+Stack trace:
+#0 {main}
+  thrown in /home/kotapin2/public_html/personalweb/send_email.php on line 36

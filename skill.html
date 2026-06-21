@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Skills De Yusep Purnama Satria — Web, Programming, IoT, AI.">
+  <title>Skills | De Yusep Purnama Satria</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ══ Page Shell ══ */
+    .skills-page {
+      min-height: calc(100vh - var(--nav-height));
+      padding: 80px 24px 100px;
+    }
+
+    .skills-hero {
+      max-width: 760px;
+      margin: 0 auto 72px;
+      text-align: center;
+    }
+
+    .skills-hero p {
+      margin-top: 16px;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* ══ Radial Skill Circles Row ══ */
+    .radial-row {
+      max-width: 1100px;
+      margin: 0 auto 60px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .radial-card {
+      padding: 36px 20px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .radial-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(135deg,
+          rgba(34, 211, 238, 0.06) 0%,
+          rgba(129, 140, 248, 0.04) 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .radial-card:hover::before {
+      opacity: 1;
+    }
+
+    /* SVG ring */
+    .ring-wrap {
+      position: relative;
+      width: 110px;
+      height: 110px;
+    }
+
+    .ring-wrap svg {
+      width: 110px;
+      height: 110px;
+      transform: rotate(-90deg);
+    }
+
+    .ring-track {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.06);
+      stroke-width: 8;
+    }
+
+    .ring-fill {
+      fill: none;
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 283;
+      /* 2π × 45 */
+      stroke-dashoffset: 283;
+      transition: stroke-dashoffset 1.4s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .ring-fill.cyan {
+      stroke: url(#grad-cyan);
+    }
+
+    .ring-fill.indigo {
+      stroke: url(#grad-indigo);
+    }
+
+    .ring-fill.pink {
+      stroke: url(#grad-pink);
+    }
+
+    .ring-fill.green {
+      stroke: url(#grad-green);
+    }
+
+    .ring-center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    .ring-pct {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .ring-icon {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+    }
+
+    .radial-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .radial-subs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .sub-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    /* ══ Two-column: Tech Stack + Soft Skills ══ */
+    .bottom-row {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .panel {
+      padding: 32px;
+    }
+
+    .panel-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel-title i {
+      color: var(--accent);
+      font-size: 0.95rem;
+    }
+
+    /* Tech hex-pill grid */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .tech-pill {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 8px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      cursor: default;
+      transition: all var(--transition);
+    }
+
+    .tech-pill:hover {
+      border-color: var(--border-accent);
+      background: rgba(34, 211, 238, 0.07);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(34, 211, 238, 0.15);
+    }
+
+    .tech-ico {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      background: rgba(34, 211, 238, 0.1);
+      color: var(--accent);
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .tech-pill:hover .tech-ico {
+      background: rgba(34, 211, 238, 0.2);
+      transform: scale(1.1);
+    }
+
+    .tech-ico.purple {
+      background: rgba(129, 140, 248, 0.12);
+      color: #818cf8;
+    }
+
+    .tech-ico.pink {
+      background: rgba(244, 114, 182, 0.12);
+      color: #f472b6;
+    }
+
+    .tech-ico.green {
+      background: rgba(52, 211, 153, 0.12);
+      color: #34d399;
+    }
+
+    .tech-ico.orange {
+      background: rgba(251, 146, 60, 0.12);
+      color: #fb923c;
+    }
+
+    .tech-ico.red {
+      background: rgba(248, 113, 113, 0.12);
+      color: #f87171;
+    }
+
+    .tech-name {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    /* Soft skills list */
+    .soft-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .soft-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .soft-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .soft-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .soft-name i {
+      width: 20px;
+      text-align: center;
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+
+    .soft-pct {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .soft-bar {
+      height: 5px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .soft-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      border-radius: 100px;
+      box-shadow: 0 0 8px rgba(34, 211, 238, 0.5);
+      width: 0;
+      transition: width 1.2s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    /* ══ Responsive ══ */
+    @media (max-width: 1000px) {
+      .radial-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .skills-page {
+        padding: 50px 18px 80px;
+      }
+
+      .bottom-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .radial-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+
+      .tech-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SVG gradient defs (hidden) -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <linearGradient id="grad-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#22d3ee" />
+        <stop offset="100%" style="stop-color:#818cf8" />
+      </linearGradient>
+      <linearGradient id="grad-indigo" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#818cf8" />
+        <stop offset="100%" style="stop-color:#c084fc" />
+      </linearGradient>
+      <linearGradient id="grad-pink" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#f472b6" />
+        <stop offset="100%" style="stop-color:#818cf8" />
+      </linearGradient>
+      <linearGradient id="grad-green" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#34d399" />
+        <stop offset="100%" style="stop-color:#22d3ee" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- ════ NAVBAR ════ -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="logo">De Yusep <span>Purnama Satria</span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skill.html" class="active">Skills</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="skill.html" class="active">Skills</a>
+    <a href="experience.html">Experience</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- ════ SKILLS PAGE ════ -->
+  <div class="skills-page">
+
+    <!-- Hero -->
+    <div class="skills-hero reveal">
+      <span class="section-badge"><i class="fas fa-bolt"></i> Keahlian</span>
+      <h1 class="section-title" style="margin-top:12px;">Stack &amp; <span>Skills</span></h1>
+      <p>Teknologi dan tools yang saya kuasai untuk membangun solusi digital yang impactful.</p>
+    </div>
+
+    <!-- ── Radial Circles ── -->
+    <div class="radial-row">
+
+      <!-- Web Dev -->
+      <div class="glass-card radial-card reveal">
+        <div class="ring-wrap">
+          <svg viewBox="0 0 110 110">
+            <circle class="ring-track" cx="55" cy="55" r="45" />
+            <circle class="ring-fill cyan" cx="55" cy="55" r="45" data-pct="80" />
+          </svg>
+          <div class="ring-center">
+            <span class="ring-pct" data-final="80">0%</span>
+            <i class="ring-icon fas fa-code"></i>
+          </div>
+        </div>
+        <div class="radial-label">Web Dev</div>
+        <div class="radial-subs">
+          <span class="sub-tag">HTML</span>
+          <span class="sub-tag">CSS</span>
+          <span class="sub-tag">JS</span>
+          <span class="sub-tag">PHP</span>
+        </div>
+      </div>
+
+      <!-- Programming -->
+      <div class="glass-card radial-card reveal delay-1">
+        <div class="ring-wrap">
+          <svg viewBox="0 0 110 110">
+            <circle class="ring-track" cx="55" cy="55" r="45" />
+            <circle class="ring-fill indigo" cx="55" cy="55" r="45" data-pct="70" />
+          </svg>
+          <div class="ring-center">
+            <span class="ring-pct" data-final="70">0%</span>
+            <i class="ring-icon fas fa-laptop-code"></i>
+          </div>
+        </div>
+        <div class="radial-label">Mobile Development</div>
+        <div class="radial-subs">
+          <span class="sub-tag">Flutter</span>
+          <span class="sub-tag">MySQL</span>
+          <span class="sub-tag">Python</span>
+        </div>
+      </div>
+
+      <!-- AI / ML -->
+      <div class="glass-card radial-card reveal delay-2">
+        <div class="ring-wrap">
+          <svg viewBox="0 0 110 110">
+            <circle class="ring-track" cx="55" cy="55" r="45" />
+            <circle class="ring-fill pink" cx="55" cy="55" r="45" data-pct="65" />
+          </svg>
+          <div class="ring-center">
+            <span class="ring-pct" data-final="65">0%</span>
+            <i class="ring-icon fas fa-brain"></i>
+          </div>
+        </div>
+        <div class="radial-label">AI / ML</div>
+        <div class="radial-subs">
+          <span class="sub-tag">Decision Tree</span>
+          <span class="sub-tag">NLP</span>
+          <span class="sub-tag">Python</span>
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div class="glass-card radial-card reveal delay-3">
+        <div class="ring-wrap">
+          <svg viewBox="0 0 110 110">
+            <circle class="ring-track" cx="55" cy="55" r="45" />
+            <circle class="ring-fill green" cx="55" cy="55" r="45" data-pct="88" />
+          </svg>
+          <div class="ring-center">
+            <span class="ring-pct" data-final="88">0%</span>
+            <i class="ring-icon fas fa-toolbox"></i>
+          </div>
+        </div>
+        <div class="radial-label">Tools</div>
+        <div class="radial-subs">
+          <span class="sub-tag">Excel</span>
+          <span class="sub-tag">Word</span>
+          <span class="sub-tag">Figma</span>
+        </div>
+      </div>
+
+    </div><!-- /radial-row -->
+
+    <!-- ── Bottom 2 columns ── -->
+    <div class="bottom-row">
+
+      <!-- Tech Stack Hex Grid -->
+      <div class="glass-card panel reveal">
+        <div class="panel-title">
+          <i class="fas fa-layer-group"></i> Tech Stack
+        </div>
+        <div class="tech-grid">
+          <div class="tech-pill">
+            <div class="tech-ico"><i class="fab fa-html5"></i></div>
+            <div class="tech-name">HTML5</div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-ico"><i class="fab fa-css3-alt"></i></div>
+            <div class="tech-name">CSS3</div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-ico"><i class="fab fa-js-square"></i></div>
+            <div class="tech-name">JavaScript</div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-ico"><i class="fab fa-php"></i></div>
+            <div class="tech-name">PHP</div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-ico purple">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="1.2rem" height="1.2rem">
+                <path
+                  d="M14.314 0L2.3 12 6 15.7 21.684.013h-7.357zm.014 11.072L7.857 17.53l6.47 6.47H21.7l-6.46-6.468 6.46-6.46h-7.37z" />
+              </svg>
+            </div>
+            <div class="tech-name">Flutter</div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-ico green"><i class="fas fa-database"></i></div>
+            <div class="tech-name">MySQL</div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-ico orange"><i class="fab fa-python"></i></div>
+            <div class="tech-name">Python</div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-ico"><i class="fab fa-git-alt"></i></div>
+            <div class="tech-name">Git</div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-ico purple"><i class="fab fa-figma"></i></div>
+            <div class="tech-name">Figma</div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-ico green"><i class="fas fa-fire"></i></div>
+            <div class="tech-name">Firebase</div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-ico"><i class="fas fa-robot"></i></div>
+            <div class="tech-name">AI / ML</div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-ico orange"><i class="fas fa-server"></i></div>
+            <div class="tech-name">XAMPP</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Soft Skills Bars -->
+      <div class="glass-card panel reveal delay-2">
+        <div class="panel-title">
+          <i class="fas fa-brain"></i> Soft Skills
+        </div>
+        <div class="soft-list">
+          <div class="soft-item">
+            <div class="soft-meta">
+              <span class="soft-name"><i class="fas fa-users"></i> Leadership &amp; Team</span>
+              <span class="soft-pct">90%</span>
+            </div>
+            <div class="soft-bar">
+              <div class="soft-fill" data-width="90"></div>
+            </div>
+          </div>
+          <div class="soft-item">
+            <div class="soft-meta">
+              <span class="soft-name"><i class="fas fa-project-diagram"></i> Project Management</span>
+              <span class="soft-pct">82%</span>
+            </div>
+            <div class="soft-bar">
+              <div class="soft-fill" data-width="82"></div>
+            </div>
+          </div>
+          <div class="soft-item">
+            <div class="soft-meta">
+              <span class="soft-name"><i class="fas fa-microphone"></i> Public Speaking</span>
+              <span class="soft-pct">78%</span>
+            </div>
+            <div class="soft-bar">
+              <div class="soft-fill" data-width="78"></div>
+            </div>
+          </div>
+          <div class="soft-item">
+            <div class="soft-meta">
+              <span class="soft-name"><i class="fas fa-lightbulb"></i> Problem Solving</span>
+              <span class="soft-pct">85%</span>
+            </div>
+            <div class="soft-bar">
+              <div class="soft-fill" data-width="85"></div>
+            </div>
+          </div>
+          <div class="soft-item">
+            <div class="soft-meta">
+              <span class="soft-name"><i class="fas fa-handshake"></i> Community Building</span>
+              <span class="soft-pct">88%</span>
+            </div>
+            <div class="soft-bar">
+              <div class="soft-fill" data-width="88"></div>
+            </div>
+          </div>
+          <div class="soft-item">
+            <div class="soft-meta">
+              <span class="soft-name"><i class="fas fa-pen-fancy"></i> Content Writing</span>
+              <span class="soft-pct">72%</span>
+            </div>
+            <div class="soft-bar">
+              <div class="soft-fill" data-width="72"></div>
+            </div>
+          </div>
+          <div class="soft-item">
+            <div class="soft-meta">
+              <span class="soft-name"><i class="fas fa-search"></i> Research &amp; Analysis</span>
+              <span class="soft-pct">80%</span>
+            </div>
+            <div class="soft-bar">
+              <div class="soft-fill" data-width="80"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /bottom-row -->
+
+  </div><!-- /skills-page -->
+
+  <script src="js/main.js"></script>
+  <script>
+    // ── Animate radial rings on scroll ──
+    const r = 45;
+    const C = 2 * Math.PI * r; // circumference ≈ 283
+
+    const rings = document.querySelectorAll('.ring-fill');
+    const counters = document.querySelectorAll('.ring-pct[data-final]');
+
+    const ringObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        const ring = entry.target;
+        const pct = parseInt(ring.dataset.pct, 10);
+        const offset = C - (C * pct / 100);
+
+        setTimeout(() => {
+          ring.style.strokeDashoffset = offset;
+        }, 200);
+
+        ringObs.unobserve(ring);
+      });
+    }, { threshold: 0.4 });
+
+    rings.forEach(r => ringObs.observe(r));
+
+    // ── Counter numbers ──
+    const numObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const end = parseInt(el.dataset.final, 10);
+        let cur = 0;
+        const step = Math.ceil(end / 50);
+        const t = setInterval(() => {
+          cur = Math.min(cur + step, end);
+          el.textContent = cur + '%';
+          if (cur >= end) clearInterval(t);
+        }, 25);
+        numObs.unobserve(el);
+      });
+    }, { threshold: 0.4 });
+
+    counters.forEach(c => numObs.observe(c));
+
+    // ── Soft skill bars ──
+    const fills = document.querySelectorAll('.soft-fill');
+    const fillObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        setTimeout(() => { el.style.width = el.dataset.width + '%'; }, 150);
+        fillObs.unobserve(el);
+      });
+    }, { threshold: 0.3 });
+
+    fills.forEach(f => fillObs.observe(f));
+  </script>
+</body>
+
+</html>
