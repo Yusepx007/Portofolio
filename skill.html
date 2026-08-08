@@ -337,6 +337,12 @@
       transition: width 1.2s cubic-bezier(.4, 0, .2, 1);
     }
 
+    .infra-tech-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
     /* ══ Responsive ══ */
     @media (max-width: 1000px) {
       .radial-row {
@@ -351,6 +357,10 @@
 
       .bottom-row {
         grid-template-columns: 1fr;
+      }
+
+      .infra-tech-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
@@ -643,6 +653,47 @@
             <div class="soft-bar">
               <div class="soft-fill" data-width="80"></div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Networking & Infrastructure Panel -->
+      <div class="glass-card panel reveal delay-3" style="grid-column: 1 / -1; margin-top: 8px;">
+        <div class="panel-title">
+          <i class="fas fa-network-wired"></i> Networking &amp; Infrastructure
+        </div>
+        <div class="infra-tech-grid">
+          <div class="tech-pill">
+            <div class="tech-ico"><i class="fab fa-linux"></i></div>
+            <div class="tech-name">Linux</div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-ico green"><i class="fas fa-server"></i></div>
+            <div class="tech-name">Nginx</div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-ico orange"><i class="fas fa-feather-alt"></i></div>
+            <div class="tech-name">Apache</div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-ico"><i class="fas fa-shield-alt"></i></div>
+            <div class="tech-name">Cloudflare Tunnel</div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-ico purple"><i class="fas fa-satellite-dish"></i></div>
+            <div class="tech-name">MQTT</div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-ico green"><i class="fas fa-project-diagram"></i></div>
+            <div class="tech-name">Mosquitto</div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-ico red"><i class="fas fa-code-branch"></i></div>
+            <div class="tech-name">Node-RED</div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-ico purple"><i class="fab fa-php"></i></div>
+            <div class="tech-name">PHP-FPM</div>
           </div>
         </div>
       </div>

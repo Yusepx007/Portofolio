@@ -357,6 +357,133 @@
       border-top: 1px solid var(--border);
     }
 
+    /* ── Networking & Infrastructure ── */
+    .infra-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .infra-card {
+      padding: 22px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color var(--transition), background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .infra-card:hover {
+      border-color: var(--border-accent);
+      background: rgba(34, 211, 238, 0.06);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(34, 211, 238, 0.15);
+    }
+
+    .infra-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .infra-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: rgba(34, 211, 238, 0.12);
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .infra-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .infra-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .infra-list li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .infra-list li i {
+      color: var(--accent);
+      font-size: 0.72rem;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .infra-tools-box {
+      margin-top: 10px;
+      padding: 18px 20px;
+      border-radius: var(--radius-md);
+      background: rgba(34, 211, 238, 0.04);
+      border: 1px dashed var(--border-accent);
+    }
+
+    .infra-tools-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .infra-badge-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .infra-badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 100px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: border-color var(--transition), background var(--transition), color var(--transition), transform var(--transition);
+    }
+
+    .infra-badge:hover {
+      border-color: var(--border-accent);
+      background: rgba(34, 211, 238, 0.12);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
     /* Responsive */
     @media (max-width: 900px) {
       .about-grid {
@@ -365,6 +492,10 @@
 
       .profile-card {
         position: static;
+      }
+
+      .infra-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -534,6 +665,123 @@
                 <div class="org-name">Pemimpin.id</div>
                 <div class="org-role">Program Participant</div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Networking & Infrastructure -->
+        <div class="glass-card content-block reveal">
+          <div class="block-title"><i class="fas fa-network-wired"></i> Networking &amp; Infrastructure</div>
+          
+          <div class="infra-grid">
+
+            <!-- 1. Cloudflare Tunnel & Remote Access -->
+            <div class="infra-card">
+              <div>
+                <div class="infra-header">
+                  <div class="infra-icon"><i class="fas fa-shield-alt"></i></div>
+                  <div class="infra-title">Cloudflare Tunnel &amp; Remote Access</div>
+                </div>
+                <ul class="infra-list">
+                  <li><i class="fas fa-check-circle"></i> Implementasi Cloudflare Tunnel menggunakan <code>cloudflared</code></li>
+                  <li><i class="fas fa-check-circle"></i> Menghubungkan server lokal ke internet tanpa membuka port secara langsung</li>
+                  <li><i class="fas fa-check-circle"></i> Konfigurasi domain/subdomain untuk mengakses aplikasi dari luar jaringan</li>
+                </ul>
+              </div>
+              <div class="tag-list">
+                <span class="tag">Cloudflare Tunnel</span>
+                <span class="tag">cloudflared</span>
+                <span class="tag">Remote Access</span>
+                <span class="tag">DNS</span>
+              </div>
+            </div>
+
+            <!-- 2. Web Server & Deployment -->
+            <div class="infra-card">
+              <div>
+                <div class="infra-header">
+                  <div class="infra-icon"><i class="fas fa-server"></i></div>
+                  <div class="infra-title">Web Server &amp; Deployment</div>
+                </div>
+                <ul class="infra-list">
+                  <li><i class="fas fa-check-circle"></i> Konfigurasi dan deployment aplikasi menggunakan Nginx</li>
+                  <li><i class="fas fa-check-circle"></i> Penggunaan Apache sebagai web server</li>
+                  <li><i class="fas fa-check-circle"></i> Konfigurasi PHP-FPM</li>
+                  <li><i class="fas fa-check-circle"></i> Troubleshooting konflik service dan port</li>
+                  <li><i class="fas fa-check-circle"></i> Konfigurasi virtual host/server block</li>
+                </ul>
+              </div>
+              <div class="tag-list">
+                <span class="tag">Nginx</span>
+                <span class="tag">Apache</span>
+                <span class="tag">PHP-FPM</span>
+                <span class="tag">Virtual Host</span>
+              </div>
+            </div>
+
+            <!-- 3. Linux Server Management -->
+            <div class="infra-card">
+              <div>
+                <div class="infra-header">
+                  <div class="infra-icon"><i class="fab fa-linux"></i></div>
+                  <div class="infra-title">Linux Server Management</div>
+                </div>
+                <ul class="infra-list">
+                  <li><i class="fas fa-check-circle"></i> Menjalankan dan mengelola aplikasi web pada Linux server</li>
+                  <li><i class="fas fa-check-circle"></i> Mengelola service menggunakan <code>systemd</code></li>
+                  <li><i class="fas fa-check-circle"></i> Troubleshooting service, port, socket PHP-FPM, dan koneksi aplikasi</li>
+                  <li><i class="fas fa-check-circle"></i> Konfigurasi environment server untuk aplikasi PHP/MySQL</li>
+                </ul>
+              </div>
+              <div class="tag-list">
+                <span class="tag">Linux</span>
+                <span class="tag">systemd</span>
+                <span class="tag">Troubleshooting</span>
+                <span class="tag">MySQL</span>
+              </div>
+            </div>
+
+            <!-- 4. MQTT & IoT Communication -->
+            <div class="infra-card">
+              <div>
+                <div class="infra-header">
+                  <div class="infra-icon"><i class="fas fa-satellite-dish"></i></div>
+                  <div class="infra-title">MQTT &amp; IoT Communication</div>
+                </div>
+                <ul class="infra-list">
+                  <li><i class="fas fa-check-circle"></i> Implementasi komunikasi perangkat IoT menggunakan MQTT</li>
+                  <li><i class="fas fa-check-circle"></i> ESP32 sebagai client untuk mengirim data sensor</li>
+                  <li><i class="fas fa-check-circle"></i> Mosquitto sebagai MQTT broker</li>
+                  <li><i class="fas fa-check-circle"></i> Node-RED untuk menerima, mengolah, dan memvisualisasikan data</li>
+                  <li><i class="fas fa-check-circle"></i> Implementasi MQTT topic untuk data sensor seperti suhu, kelembapan, dan kondisi tempat sampah</li>
+                </ul>
+              </div>
+              <div class="tag-list">
+                <span class="tag">MQTT</span>
+                <span class="tag">Mosquitto</span>
+                <span class="tag">Node-RED</span>
+                <span class="tag">ESP32</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- 5. Networking Tools & Technologies -->
+          <div class="infra-tools-box">
+            <div class="infra-tools-title">
+              <i class="fas fa-tools"></i> Networking Tools &amp; Technologies
+            </div>
+            <div class="infra-badge-list">
+              <span class="infra-badge"><i class="fab fa-linux"></i> Linux</span>
+              <span class="infra-badge"><i class="fas fa-server"></i> Nginx</span>
+              <span class="infra-badge"><i class="fas fa-feather-alt"></i> Apache</span>
+              <span class="infra-badge"><i class="fas fa-shield-alt"></i> Cloudflare Tunnel</span>
+              <span class="infra-badge"><i class="fas fa-satellite-dish"></i> MQTT</span>
+              <span class="infra-badge"><i class="fas fa-project-diagram"></i> Mosquitto</span>
+              <span class="infra-badge"><i class="fas fa-code-branch"></i> Node-RED</span>
+              <span class="infra-badge"><i class="fas fa-microchip"></i> ESP32</span>
+              <span class="infra-badge"><i class="fab fa-php"></i> PHP-FPM</span>
+              <span class="infra-badge"><i class="fas fa-database"></i> MySQL</span>
             </div>
           </div>
         </div>
