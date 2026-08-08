@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Portfolio De Yusep Purnama Satria — Mahasiswa Informatika, Web Developer, IoT Enthusiast, & Community Leader di Tasikmalaya.">
+    content="Portfolio De Yusep Purnama Satria — Mahasiswa Informatika, Web & Mobile Developer, Tech Enthusiast, & Community Leader di Tasikmalaya.">
   <title>De Yusep Purnama Satria | Portfolio</title>
 
   <meta name="theme-color" content="#070711">
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
   <meta property="og:title" content="De Yusep Purnama Satria | Portfolio">
-  <meta property="og:description" content="Portfolio De Yusep Purnama Satria — Mahasiswa Informatika, Web Developer, IoT Enthusiast, & Community Leader.">
+  <meta property="og:description" content="Portfolio De Yusep Purnama Satria — Mahasiswa Informatika, Web & Mobile Developer, Tech Enthusiast, & Community Leader.">
   <meta property="og:image" content="img/profile.jpeg">
   <meta property="og:type" content="website">
 
@@ -27,41 +27,50 @@
     .hero {
       min-height: calc(100vh - var(--nav-height));
       display: flex;
-      align-items: center;
-      padding: 60px 24px;
-    }
-
-    .hero-inner {
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px 24px 30px;
       max-width: 1200px;
       margin: 0 auto;
       width: 100%;
+    }
+
+    .hero-inner {
+      width: 100%;
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 60px;
+      gap: 50px;
       align-items: center;
     }
 
     /* Text side */
     .hero-text .greeting {
-      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
       font-weight: 600;
-      letter-spacing: 3px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 12px;
+      background: rgba(34, 211, 238, 0.08);
+      border: 1px solid var(--border-accent);
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 16px;
       opacity: 0;
-      animation: fadeUp 0.7s ease 0.1s forwards;
+      animation: fadeUp 0.6s ease 0.1s forwards;
     }
 
     .hero-text h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 4.2rem);
+      font-size: clamp(2rem, 4.2vw, 3.4rem);
       font-weight: 800;
-      letter-spacing: -2px;
-      line-height: 1.1;
-      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 14px;
       opacity: 0;
-      animation: fadeUp 0.7s ease 0.2s forwards;
+      animation: fadeUp 0.6s ease 0.2s forwards;
     }
 
     .hero-text h1 .name-highlight {
@@ -72,26 +81,30 @@
     }
 
     .hero-text .typewriter-wrap {
-      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-size: clamp(1.05rem, 2.2vw, 1.4rem);
       font-weight: 600;
       color: var(--text-muted);
-      margin-bottom: 24px;
-      min-height: 2rem;
+      margin-bottom: 18px;
+      min-height: 1.8em;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
       opacity: 0;
-      animation: fadeUp 0.7s ease 0.3s forwards;
+      animation: fadeUp 0.6s ease 0.3s forwards;
     }
 
     .typewriter-text {
       color: var(--accent);
+      margin-left: 6px;
     }
 
     .cursor-blink {
       display: inline-block;
       width: 2.5px;
-      height: 1.2em;
+      height: 1.15em;
       background: var(--accent);
       vertical-align: middle;
-      margin-left: 2px;
+      margin-left: 3px;
       animation: blink 0.85s step-end infinite;
     }
 
@@ -102,13 +115,13 @@
     }
 
     .hero-text .bio {
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
-      line-height: 1.75;
-      max-width: 520px;
-      margin-bottom: 36px;
+      line-height: 1.7;
+      max-width: 540px;
+      margin-bottom: 28px;
       opacity: 0;
-      animation: fadeUp 0.7s ease 0.4s forwards;
+      animation: fadeUp 0.6s ease 0.4s forwards;
     }
 
     .hero-actions {
@@ -116,16 +129,16 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 14px;
-      margin-bottom: 36px;
+      margin-bottom: 28px;
       opacity: 0;
-      animation: fadeUp 0.7s ease 0.5s forwards;
+      animation: fadeUp 0.6s ease 0.5s forwards;
     }
 
     .hero-socials {
       display: flex;
       gap: 12px;
       opacity: 0;
-      animation: fadeUp 0.7s ease 0.6s forwards;
+      animation: fadeUp 0.6s ease 0.6s forwards;
     }
 
     .hero-socials a {
@@ -151,34 +164,28 @@
 
     /* Image side */
     .hero-image-wrap {
-      width: 300px;
-      height: 300px;
+      width: 280px;
+      height: 280px;
       position: relative;
       flex-shrink: 0;
       opacity: 0;
-      animation: scaleIn 0.9s ease 0.3s forwards;
+      animation: fadeUp 0.7s ease 0.3s forwards;
     }
 
     .hero-image-wrap::before {
       content: '';
       position: absolute;
-      inset: -16px;
+      inset: -12px;
       border-radius: 50%;
       background: conic-gradient(var(--accent), var(--accent-2), var(--accent));
-      animation: spin 6s linear infinite;
-      opacity: 0.6;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+      animation: spin 8s linear infinite;
+      opacity: 0.55;
     }
 
     .hero-image-wrap::after {
       content: '';
       position: absolute;
-      inset: -10px;
+      inset: -6px;
       border-radius: 50%;
       background: var(--bg-primary);
     }
@@ -190,8 +197,8 @@
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid rgba(34, 211, 238, 0.3);
-      animation: float 5s ease-in-out infinite;
+      border: 3px solid rgba(34, 211, 238, 0.35);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     /* Stats row */
@@ -199,52 +206,65 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-top: 60px;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0 24px 60px;
+      margin-top: 36px;
+      width: 100%;
     }
 
     .stat-card {
-      padding: 24px;
+      padding: 18px 20px;
       text-align: center;
+      border-radius: var(--radius-md);
     }
 
     .stat-card .stat-num {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 800;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       line-height: 1;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .stat-card .stat-label {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
       font-weight: 500;
     }
 
-    /* ── Responsive ── */
+    /* ── Responsive Tablet & Mobile ── */
     @media (max-width: 900px) {
+      .hero {
+        padding: 30px 20px 30px;
+        min-height: auto;
+      }
+
       .hero-inner {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 40px;
+        gap: 28px;
       }
 
       .hero-image-wrap {
-        width: 220px;
-        height: 220px;
-        margin: 0 auto;
+        order: -1;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 8px;
+      }
+
+      .hero-text .greeting {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-text .typewriter-wrap {
+        justify-content: center;
       }
 
       .hero-text .bio {
-        margin: 0 auto 32px;
+        margin: 0 auto 24px;
       }
 
       .hero-actions,
@@ -255,19 +275,66 @@
 
     @media (max-width: 640px) {
       .hero {
-        padding: 40px 18px;
+        padding: 24px 16px 36px;
+      }
+
+      .hero-image-wrap {
+        width: 160px;
+        height: 160px;
+      }
+
+      .hero-text h1 {
+        font-size: clamp(1.75rem, 7.5vw, 2.2rem);
+        letter-spacing: -0.5px;
+      }
+
+      .hero-text .bio {
+        font-size: 0.88rem;
+        line-height: 1.6;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+      }
+
+      .hero-actions a {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        padding: 12px 20px;
       }
 
       .hero-stats {
-        grid-template-columns: 1fr;
-        gap: 12px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-top: 28px;
+      }
+
+      .stat-card {
+        padding: 12px 6px;
+        border-radius: var(--radius-sm);
+      }
+
+      .stat-card .stat-num {
+        font-size: 1.45rem;
+      }
+
+      .stat-card .stat-label {
+        font-size: 0.68rem;
+        line-height: 1.2;
       }
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 360px) {
       .hero-image-wrap {
-        width: 180px;
-        height: 180px;
+        width: 140px;
+        height: 140px;
+      }
+
+      .stat-card .stat-num {
+        font-size: 1.25rem;
       }
     }
   </style>
@@ -316,9 +383,9 @@
         </div>
 
         <p class="bio">
-          Mahasiswa Teknik Informatika di Universitas Mayasari Bakti Tasikmalaya dengan minat pada
+          Mahasiswa Teknik Informatika di Universitas Mayasari Bakti Tasikmalaya dengan fokus pada
           Web Development, Mobile Development, dan Artificial Intelligence. Aktif dalam berbagai
-          organisasi nasional dan kegiatan sosial.
+          organisasi kepemudaan nasional dan kegiatan sosial.
         </p>
 
         <div class="hero-actions">
@@ -348,32 +415,32 @@
 
       <!-- Image -->
       <div class="hero-image-wrap">
-        <img class="hero-avatar" src="img/profile.jpeg" alt="De Yusep Purnama Satria" width="300" height="300"
+        <img class="hero-avatar" src="img/profile.jpeg" alt="De Yusep Purnama Satria" width="280" height="280"
           loading="eager">
+      </div>
+    </div>
+
+    <!-- ════ QUICK STATS ════ -->
+    <div class="hero-stats">
+      <div class="glass-card stat-card reveal">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="glass-card stat-card reveal delay-2">
+        <div class="stat-num">6+</div>
+        <div class="stat-label">Organizations</div>
+      </div>
+      <div class="glass-card stat-card reveal delay-3">
+        <div class="stat-num">2022</div>
+        <div class="stat-label">Started Coding</div>
       </div>
     </div>
   </section>
 
-  <!-- ════ QUICK STATS ════ -->
-  <div class="hero-stats">
-    <div class="glass-card stat-card reveal">
-      <div class="stat-num">10+</div>
-      <div class="stat-label">Projects Completed</div>
-    </div>
-    <div class="glass-card stat-card reveal delay-2">
-      <div class="stat-num">6+</div>
-      <div class="stat-label">Organizations</div>
-    </div>
-    <div class="glass-card stat-card reveal delay-3">
-      <div class="stat-num">2022</div>
-      <div class="stat-label">Started Coding</div>
-    </div>
-  </div>
-
   <script src="js/main.js"></script>
   <script>
     // Typewriter
-    const words = ['Web Developer', 'IoT Enthusiast', 'Community Leader', 'AI Explorer'];
+    const words = ['Web Developer', 'Mobile Developer', 'Tech Enthusiast', 'Community Leader', 'AI Explorer'];
     let wi = 0, ci = 0, deleting = false;
     const el = document.getElementById('typewriter');
 

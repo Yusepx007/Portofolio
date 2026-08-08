@@ -14,12 +14,18 @@
   const ctx = canvas.getContext('2d');
   let W, H, raf;
 
-  // ── Responsive resize ──
+  // ── Responsive resize (ignore pure vertical scroll height changes on mobile) ──
+  let lastW = window.innerWidth;
   function resize() {
     W = canvas.width  = window.innerWidth;
     H = canvas.height = window.innerHeight;
   }
-  window.addEventListener('resize', resize, { passive: true });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth !== lastW || Math.abs(window.innerHeight - H) > 150) {
+      lastW = window.innerWidth;
+      resize();
+    }
+  }, { passive: true });
   resize();
 
   // ── Star field ──
