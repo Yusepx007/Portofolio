@@ -10,11 +10,11 @@ if (!isset($data['name']) || !isset($data['email']) || !isset($data['subject']) 
     exit;
 }
 
-// Sanitasi input
-$name = filter_var($data['name'], FILTER_SANITIZE_STRING);
-$email = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
-$subject = filter_var($data['subject'], FILTER_SANITIZE_STRING);
-$message = filter_var($data['message'], FILTER_SANITIZE_STRING);
+// Sanitasi input (kompatibel PHP 8.1+)
+$name = isset($data['name']) ? htmlspecialchars(strip_tags(trim($data['name'])), ENT_QUOTES, 'UTF-8') : '';
+$email = isset($data['email']) ? filter_var(trim($data['email']), FILTER_SANITIZE_EMAIL) : '';
+$subject = isset($data['subject']) ? htmlspecialchars(strip_tags(trim($data['subject'])), ENT_QUOTES, 'UTF-8') : '';
+$message = isset($data['message']) ? htmlspecialchars(strip_tags(trim($data['message'])), ENT_QUOTES, 'UTF-8') : '';
 
 // Validasi email
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
