@@ -1,23 +1,9 @@
 <IfModule mod_rewrite.c>
-    # 1. Mencegah Directory Listing
     Options -Indexes
     RewriteEngine On
 
-    # 2. Redirect /index.html ke root (/)
-    RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s(.*)/index\.html [NC]
-    RewriteRule ^(.*)index\.html$ %1/ [R=301,L]
-
-    # 3. Redirect file.html ke URL bersih tanpa .html (misal: /about.html -> /about)
-    RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s(.*)/([^.]+)\.html [NC]
-    RewriteRule ^(.*)\.html$ %1/%2 [R=301,L]
-
-    # 4. Baca file .html secara internal ketika diakses tanpa .html
+    # Membaca URL tanpa ekstensi .html secara otomatis
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME}.html -f
-    RewriteRule ^(.*)$ $1.html [L,QSA]
+    RewriteRule ^(.*)$ $1.html [NC,L]
 </IfModule>
-
-# 5. Mencegah akses langsung ke file .htaccess
-<Files .htaccess>
-    Require all denied
-</Files>
