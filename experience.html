@@ -88,6 +88,22 @@
       grid-template-columns: 1fr;
     }
 
+    /* Poster view — shows full uncropped flyer/poster */
+    .exp-imgs.poster-view {
+      height: 380px;
+      background: #090915;
+    }
+
+    .exp-imgs.poster-view img {
+      object-fit: contain !important;
+      object-position: center !important;
+      filter: none !important;
+    }
+
+    .exp-card:hover .exp-imgs.poster-view img {
+      transform: scale(1.02);
+    }
+
     /* Per-image position fixes — tuned per actual photo */
     .pos-top {
       object-position: center top !important;
@@ -483,9 +499,9 @@
 
       <!-- INDONESIANEXT TELKOMSEL -->
       <div class="exp-card reveal delay-2">
-        <div class="exp-imgs single">
+        <div class="exp-imgs single poster-view">
           <a href="https://www.instagram.com/p/DbVv1ANHxbg/?img_index=3" target="_blank" rel="noopener noreferrer" title="Buka pengumuman Instagram IndonesiaNEXT">
-            <img src="img/top-33-indonext.png" alt="IndonesiaNEXT Top 33 Hacker" loading="lazy" class="pos-top">
+            <img src="img/top-33-indonext.png" alt="IndonesiaNEXT Top 33 Hacker - De Yusep Purnama Satria" loading="lazy">
           </a>
         </div>
         <div class="exp-body">
